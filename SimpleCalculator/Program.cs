@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using SimpleCalculator;
+
 Console.WriteLine("Hello, World!");
 
 double num1 = 0;
@@ -21,56 +23,38 @@ Console.WriteLine("" +
     "4. Division\n");
 
 Console.Write("Enter the operation number (1-4): ");
+compute();
 
-string op = Console.ReadLine()!;
 
-AROperation aROperation = new AROperation();
 
-try
+void compute()
 {
-    switch (op)
+    string op = Console.ReadLine()!;
+
+    Operation operation = new();
+
+    try
     {
-        case "1":
-            aROperation.Addition(num1, num2);
-            break;
-        case "2":
-            aROperation.Subtract(num1, num2);
-            break;
-        case "3":
-            aROperation.Multiple(num1, num2);
-            break;
-        case "4":
-            aROperation.Divide(num1, num2);
-            break;
+        switch (op)
+        {
+            case "1":
+                operation.Addition(num1, num2);
+                break;
+            case "2":
+                operation.Subtract(num1, num2);
+                break;
+            case "3":
+                operation.Multiple(num1, num2);
+                break;
+            case "4":
+                operation.Divide(num1, num2);
+                break;
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
     }
 }
-catch (Exception e)
-{
-    Console.WriteLine(e);
-}
 
-
-
-class AROperation
-{
-    public void Addition(double num1, double num2)
-    {
-        Console.WriteLine($"Result is: {num1 + num2}");
-    }
-
-    public void Subtract(double num1, double num2)
-    {
-        Console.WriteLine($"Result is: {num1 - num2}");
-    }
-
-    public void Multiple(double num1, double num2)
-    {
-        Console.WriteLine($"Result is: {num1 * num2}");
-    }
-
-    public void Divide(double num1, double num2)
-    {
-        Console.WriteLine($"Result is: {num1 / num2}");
-    }
-}
 
