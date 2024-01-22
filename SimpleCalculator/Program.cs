@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using SimpleCalculator;
 
+double num1;
+double num2;
+
 
 Console.WriteLine("" +
     "---------------------\n" +
@@ -8,10 +11,18 @@ Console.WriteLine("" +
     "---------------------\n");
 
 Console.Write("Enter first number: ");
-double num1 = Convert.ToDouble(Console.ReadLine());
+while (!double.TryParse(Console.ReadLine(), out num1))
+{
+    Console.Write("Invalid input! \nEnter first number: ");
+}
+
 
 Console.Write("Enter second number: ");
-double num2 = Convert.ToDouble(Console.ReadLine());
+while (!double.TryParse(Console.ReadLine(), out num2))
+{
+    Console.Write("Invalid input! \nEnter second number: ");
+}
+
 
 Console.WriteLine("" +
     "Choose an operation:\n" +
@@ -27,22 +38,34 @@ compute();
 
 void compute()
 {
-    string op = Console.ReadLine()!;
+    int op;
+
+    while (!int.TryParse(Console.ReadLine(), out op))
+    {
+        Console.Write("Invalid input! \nEnter the operation number (1-4): ");
+    }
+
+    if (op > 4)
+    {
+        Console.WriteLine("No operation found!");
+        return;
+    }
+
 
     try
     {
         switch (op)
         {
-            case "1":
+            case 1:
                 Console.WriteLine($"Result of Division: {Operation.Addition(num1, num2)}");
                 break;
-            case "2":
+            case 2:
                 Console.WriteLine($"Result of Subtraction: {Operation.Subtract(num1, num2)}");
                 break;
-            case "3":
+            case 3:
                 Console.WriteLine($"Result of Multiplication: {Operation.Multiple(num1, num2)}");
                 break;
-            case "4":
+            case 4:
                 Console.WriteLine($"Result of Division: {Operation.Divide(num1, num2)}");
                 break;
         }
