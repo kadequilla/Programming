@@ -11,7 +11,7 @@ namespace SimpleCalculator
             double num2;
 
 
-            Console.WriteLine("\n\n\n\n" +
+            Console.WriteLine("\n\n" +
                 "---------------------\n" +
                 "* Simple Calculator *\n" +
                 "---------------------\n");
@@ -56,9 +56,11 @@ namespace SimpleCalculator
             if (op > 4)
             {
                 Console.Write("No operation found!");
+                Console.Write("\n");
                 Main([]); //go back to main
             }
 
+            Console.Write("\n");
 
             try
             {
